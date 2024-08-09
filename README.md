@@ -4,7 +4,7 @@ AI based Chatbot is a web application built using Flask, MongoDB, HTML, Tailwind
 
 ## Deployed Application
 
-🚀 **Check out the live version of Farming Companion!** 🚀
+🚀 **Check out the live version of AI Chatbot!** 🚀
 
 [![Live Application](https://img.shields.io/badge/Live%20Application-Click%20Here-brightgreen)](https://ai-based-chat-bot.vercel.app/)
 
