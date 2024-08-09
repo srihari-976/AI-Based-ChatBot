@@ -2,6 +2,13 @@
 
 AI based Chatbot is a web application built using Flask, MongoDB, HTML, Tailwind CSS, and JavaScript. It provides a platform for real-time communication and interaction with an AI-powered chatbot. This project is designed to facilitate collaborative work within a team environment, particularly aimed at groups working on projects together, such as in educational or small office settings.
 
+## Deployed Application
+
+You can view the live version of the project at the following link:
+
+[Live Application](https://ai-based-chat-bot.vercel.app/)
+
+
 ## Features
 
 - **Chat Interface**: Interactive chat interface where users can input queries and receive responses from the AI chatbot.
