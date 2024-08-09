@@ -4,11 +4,11 @@ from flask_pymongo import PyMongo # type: ignore
 from openai import OpenAI
 import os
 
-os.environ["OPENAI_API_KEY"] = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+os.environ["OPENAI_API_KEY"] = "sk-proj-NLuWxbOmiL5eeuvRgaeQT3BlbkFJ9NrSjgDVRkgjHDiUX9Xl"
 client = OpenAI()
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+app.config["MONGO_URI"] = "mongodb+srv://chatbot:Rasp%4012@chatbot.gpcs8iy.mongodb.net/chatbot"
 mongo = PyMongo(app)
 
 @app.route("/")
