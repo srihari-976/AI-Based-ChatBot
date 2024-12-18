@@ -65,9 +65,6 @@ Contributions to the AI based Chatbot project are welcome. Here's how you can co
 - Push to the branch (`git push origin feature/improvement`).
 - Create a new Pull Request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
