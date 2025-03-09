@@ -6,7 +6,7 @@ AI based Chatbot is a web application built using Flask, MongoDB, HTML, Tailwind
 
 🚀 **Check out the live version of AI Chatbot!** 🚀
 
-[![Live Application](https://ai-based-chatbot-git-main-srihariramesh2004s-projects.vercel.app/)]
+[![Live Application](https://img.shields.io/badge/Live%20Application-Click%20Here-brightgreen)](https://ai-based-chatbot-git-main-srihariramesh2004s-projects.vercel.app/)
 
 
 ## Features
