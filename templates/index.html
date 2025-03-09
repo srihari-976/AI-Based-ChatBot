@@ -1,0 +1,140 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/6819/6819738.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <title>SOLVUS GPT</title>
+</head>
+
+<body>
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <button class="new-chat-btn" id="newChatButton">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>New Chat</span>
+            </button>
+            
+            <div class="chat-history">
+                <div class="chat-date">Today</div>
+                <div class="chats-scroll-container">
+                    {% for chat in myChats %}
+                    <div class="chat" data-question="{{chat.question}}">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="chat-icon">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span>{{chat.question}}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <h1>SOLVUS GPT</h1>
+                <div class="quick-prompts">
+                    <div class="prompt-section">
+                        <svg class="prompt-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <h3>Examples</h3>
+                        <button class="prompt-btn" data-prompt="What is Blockchain">What is Blockchain</button>
+                        <button class="prompt-btn" data-prompt="What is Crypto Currency">What is Crypto Currency</button>
+                        <button class="prompt-btn" data-prompt="What is Quantum Computing">What is Quantum Computing</button>
+                    </div>
+
+                    <div class="prompt-section">
+                        <svg class="prompt-icon" viewBox="0 0 24 24">
+                            <path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path>
+                        </svg>
+                        <h3>Capabilities</h3>
+                        <button class="prompt-btn" data-prompt="How can Neural Network be implemented">How can Neural Network be implemented</button>
+                        <button class="prompt-btn" data-prompt="Which is the best Algorithm">Which is the best Algorithm</button>
+                        <button class="prompt-btn" data-prompt="How to do Dual boot">How to do Dual boot</button>
+                    </div>
+
+                    <div class="prompt-section">
+                        <svg class="prompt-icon" viewBox="0 0 24 24">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <h3>Limitations</h3>
+                        <button class="prompt-btn" data-prompt="Is AI Emerging very fast in the current world">Is AI Emerging very fast in the current world</button>
+                        <button class="prompt-btn" data-prompt="Which are the best Languages to learn">Which are the best Languages to learn</button>
+                        <button class="prompt-btn" data-prompt="Best backend tools to learn">Best backend tools to learn</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Screen -->
+            <div class="chat-screen" id="chatScreen" style="display: none;">
+                <div class="messages-container" id="messagesContainer">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <input type="text" class="input-field" id="questionInput" placeholder="Send a message...">
+                <button class="send-button" id="sendButton">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="send-icon">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <svg class="theme-icon" viewBox="0 0 24 24">
+            <path class="sun-icon" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            <circle class="sun-icon" cx="12" cy="12" r="5"></circle>
+            <path class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="soundToggle" title="Toggle sound">
+        <svg class="sound-icon" viewBox="0 0 24 24">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path class="sound-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+    </button>
+
+    <!-- Mobile Menu -->
+    <button class="mobile-menu" id="mobileMenu" title="Toggle menu">
+        <svg viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>
